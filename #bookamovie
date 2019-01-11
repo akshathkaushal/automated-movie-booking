@@ -22,7 +22,7 @@ pno=input("Please enter your phone number. ")
 if eat == "y":
     print("Here is the list of available items")
     print("Just enter the index no. of your favourite snack")
-    print("and boom! We'll serve it to you while you watch your favourite movie.")
+    print("and boom! We'll serve it to you while you watch your favourite movie :) ")
 
     print("1) Couple Combo (Salted)")
     print("2) XL Nachos with Salsa & Cheese Dip")
