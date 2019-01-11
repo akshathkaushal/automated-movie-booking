@@ -248,3 +248,4 @@ driver.find_element_by_xpath("//*[@id='prePay']").click()
 # for email and phone no.
 driver.find_element_by_xpath("//*[@id='txtEmail']").send_keys(email)
 driver.find_element_by_xpath("//*[@id='txtMobile']").send_keys(pno)
+driver.find_element_by_xpath("//*[@id='dContinueContactSec']/a").click()
