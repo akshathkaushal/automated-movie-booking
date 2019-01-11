@@ -1,0 +1,244 @@
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select
+import datetime, random
+
+t1=datetime.datetime.now()
+t=t1.strftime("%d")
+t=int(t)
+x=input("Enter the location: ")
+y=input("Enter the name of show, movie, event etc: ")
+z=input("The tickets are available for five days including today so, tell us when do you want to go? (Enter the date :) ")
+z=int(z)
+n=input("How many guys are going? ")
+n=int(n)
+m=input("Enter mall preference. ")
+ticket=input("Do you want mobile ticket or pickup from box-office? [m/b] ")
+eat=input(print("The cinema has a variety of eatables, want some?[y/n]"))
+if eat=="y":
+    print("Here is the list of available items, just enter the index no. of your favourite snack and boom! we'll serve it to you while you watch your favourite movie.")
+
+    print("1) Couple Combo (Salted)")
+    print("2) XL Nachos with Salsa & Cheese Dip")
+    print("3) Chicken Tikka Sandwich")
+    print("4) Large Salted Popcorn")
+    print("5) Large Caramel Popcorn")
+    print("6) Large Cheese Popcorn + 2 Combo Pepsi")
+    print("7) Masala French Fries")
+    print("8) Natural Mineral Water Bottle 500ml")
+    print("9) Regular Caramel Popcorn + Combo Pepsi")
+    print("10) Large Caramel Popcorn + Combo Pepsi")
+    print("11) Chicken Nuggets")
+    print("12) Large Caramel Popcorn + 2 Combo Pepsi")
+    print("13) Regular Salted Popcorn + Combo Pepsi")
+    print("14) Large Pepsi")
+    print("15) Large Cheese Popcorn + Combo Pepsi")
+    print("16) Regular Cheese Popcorn + Combo Pepsi")
+    print("17) Chicken Burger")
+    print("18) Mega Salted Popcorn")
+    print("19) Smilies")
+    print("20) Large Salted Popcorn + Iced Tea")
+    print("21) Mint Mojito Lemonade 650ml")
+    print("22) Large Cheese Popcorn")
+    print("23) Regular Salted Popcorn")
+    print("24) Regular Caramel Popcorn")
+    print("25) Regular Cheese Popcorn")
+    print("26) Regular Pepsi")
+    print("27) XL Nachos with Salsa & Cheese Dip + Combo Pepsi")
+    print("28) Veg Burger")
+    print("29) Potato Wedges")
+    print("30) Chicken Popcorn")
+    print("31) Regular Ice Tea")
+    print("32) Paneer Tikka Sandwich")
+    print("33) Large Salted Popcorn + 2 Iced Tea")
+    print("34) Regular Salted Popcorn + Iced Tea")
+    food=input()
+    food=int(food)
+
+driver=webdriver.Chrome("/home/akshath/Downloads/chromedriver")
+
+driver.maximize_window()
+
+# for opening the desired city
+driver.get("https://in.bookmyshow.com/"+x)
+print(driver.title)
+
+driver.implicitly_wait(5)
+
+# for eliminating the popup
+driver.find_element_by_xpath("//*[@id='wzrk-cancel']").click()
+
+driver.implicitly_wait(7)
+
+# for putting in the movie name
+show=driver.find_element_by_xpath("//*[@id='input-search-box']")
+show.send_keys(y)
+driver.implicitly_wait(3)
+show.send_keys(Keys.RETURN)
+
+#for the date
+if z==t:
+    try:
+        driver.find_element_by_xpath("//*[@id='showDates']/li[1]").click()
+    except:
+        print("The show is not available on th current date :(")
+
+elif z==t+1:
+    try:
+        driver.find_element_by_xpath("//*[@id='showDates']/li[2]").click()
+    except:
+        print("The show is not available on th current date :(")
+
+elif z==t+2:
+    try:
+        driver.find_element_by_xpath("//*[@id='showDates']/li[3]").click()
+    except:
+        print("The show is not available on th current date :(")
+
+elif z==t+3:
+    try:
+        driver.find_element_by_xpath("//*[@id='showDates']/li[4]").click()
+    except:
+        print("The show is not available on th current date :(")
+
+elif z==t+4:
+    try:
+        driver.find_element_by_xpath("//*[@id='showDates']/li[5]").click()
+    except:
+        print("The show is not available on th current date :(")
+
+select = driver.find_element_by_xpath("//*[@id='fltrsearch']")
+#icon=driver.find_element_by_class_name("icon-search")
+#icon.click()
+#select.click()
+select.send_keys(m)
+#driver.implicitly_wait(3)
+select.send_keys(Keys.RETURN)
+driver.find_element_by_css_selector("#venuelist > li:nth-child(4) > div.body > div:nth-child(1) > a").click()
+# #venuelist > li:nth-child(1) > div.body > div > a
+# #venuelist > li:nth-child(4) > div.body > div:nth-child(1) > a
+# #venuelist > li:nth-child(4) > div.body > div:nth-child(1) > a
+
+try:
+    driver.find_element_by_xpath("//*[@id='btnPopupAccept']").click()
+except:
+    print("No Acceptance")
+
+
+# for no. of seats
+if n==1:
+    driver.find_element_by_xpath("//*[@id='pop_1']").click()
+elif n==2:
+    driver.find_element_by_xpath("//*[@id='pop_2']").click()
+elif n==3:
+    driver.find_element_by_xpath("//*[@id='pop_3']").click()
+elif n==4:
+    driver.find_element_by_xpath("//*[@id='pop_4']").click()
+elif n==5:
+    driver.find_element_by_xpath("//*[@id='pop_5']").click()
+elif n==6:
+    driver.find_element_by_xpath("//*[@id='pop_6']").click()
+elif n==7:
+    driver.find_element_by_xpath("//*[@id='pop_7']").click()
+elif n==8:
+    driver.find_element_by_xpath("//*[@id='pop_8']").click()
+elif n==9:
+    driver.find_element_by_xpath("//*[@id='pop_9']").click()
+elif n==10:
+    driver.find_element_by_xpath("//*[@id='pop_10']").click()
+
+driver.implicitly_wait(5)
+# for confirming seats
+driver.find_element_by_id("proceed-Qty").click()
+
+# #venuelist > li:nth-child(4) > div.body > div:nth-child(1) > a
+
+seat=driver.find_elements_by_css_selector("a._available")
+length=len(seat)
+r=random.randint(1,length)
+print(length)
+for i in range(1,n):
+    seat[r].click()
+driver.implicitly_wait(5)
+x=driver.find_element_by_xpath("//*[@id='btmcntbook']")
+if x.is_displayed():
+    x.click()
+if x=="m":
+    driver.find_element_by_xpath("//*[@id='shmticket']/label").click()
+else:
+    driver.find_element_by_xpath("//*[@id='shbox']/label").click()
+
+# for food item
+if eat=="y":
+    if food==1:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020005-44']").click()
+    elif food==2:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020006-138']").click()
+    elif food==3:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020079-799']").click()
+    elif food==4:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020001-35']").click()
+    elif food==5:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020001-34']").click()
+    elif food==6:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020005-489']").click()
+    elif food==7:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020036-650']").click()
+    elif food==8:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020171-925']").click()
+    elif food==9:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020007-570']").click()
+    elif food==10:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020007-570']").click()
+    elif food==11:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020162-804']").click()
+    elif food==12:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020005-488']").click()
+    elif food==13:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020007-45']").click()
+    elif food==14:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020009-232']").click()
+    elif food==15:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020014-488']").click()
+    elif food==16:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020007-571']").click()
+    elif food==17:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020016-4']").click()
+    elif food==18:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020001-915']").click()
+    elif food==19:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020042-415']").click()
+    elif food==20:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020371-17']").click()
+    elif food==21:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020549-37']").click() # mojito
+    elif food==22:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020001-916']").click()
+    elif food==23:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020004-16']").click()
+    elif food==24:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020004-1117']").click()
+    elif food==25:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020004-1118']").click() #regular cheese popcorn
+    elif food==26:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020009-481']").click()
+    elif food==27:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020012-15']").click()
+    elif food==28:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020013-145']").click() # veg burger
+    elif food==29:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020035-347']").click()
+    elif food==30:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020100-557']").click()
+    elif food==31:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020168-635']").click()
+    elif food==32:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020446-699']").click()
+    elif food==33:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020518-720']").click()
+    elif food==34:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020322-646']").click()
+
+driver.find_element_by_xpath("//*[@id='prePay']").click()
