@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.ui import Select
 import datetime, random
 
@@ -17,12 +18,11 @@ n=int(n)
 m=input("Enter mall preference. ")
 ticket=input("Do you want mobile ticket or pickup from box-office? [m/b] ")
 eat=input(print("The cinema has a variety of eatables, want some?[y/n]"))
-email=input("Please enter your email address. ")
-pno=input("Please enter your phone number. ")
+
 if eat == "y":
     print("Here is the list of available items")
     print("Just enter the index no. of your favourite snack")
-    print("and boom! We'll serve it to you while you watch your favourite movie :) ")
+    print("and boom! We'll serve it to you while you watch your favourite movie.")
 
     print("1) Couple Combo (Salted)")
     print("2) XL Nachos with Salsa & Cheese Dip")
@@ -61,21 +61,24 @@ if eat == "y":
     food=input()
     food=int(food)
 
-driver=webdriver.Chrome("/home/akshath/Downloads/chromedriver")
+email=input("Please enter your email address. ")
+pno=input("Please enter your phone number. ")
 
+driver=webdriver.Chrome("/home/akshath/Downloads/chromedriver")
+wait=WebDriverWait(driver, 60)
 driver.maximize_window()
 
 # for opening the desired city
 driver.get("https://in.bookmyshow.com/"+x)
 print(driver.title)
 
-driver.implicitly_wait(5)
-
+#driver.implicitly_wait(5)
+wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='wzrk-cancel']")))
 # for eliminating the popup
 driver.find_element_by_xpath("//*[@id='wzrk-cancel']").click()
 
-driver.implicitly_wait(7)
-
+#driver.implicitly_wait(7)
+wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='input-search-box']")))
 # for putting in the movie name
 show=driver.find_element_by_xpath("//*[@id='input-search-box']")
 show.send_keys(y)
@@ -118,10 +121,13 @@ select = driver.find_element_by_xpath("//*[@id='fltrsearch']")
 select.send_keys(m)
 #driver.implicitly_wait(3)
 select.send_keys(Keys.RETURN)
-driver.find_element_by_css_selector("#venuelist > li:nth-child(4) > div.body > div:nth-child(1) > a").click()
+try:
+    driver.find_element_by_css_selector("#venuelist > li:nth-child(4) > div.body > div:nth-child(1) > a").click()
+except:
+    print("Sorry, show is either full or no available :(")
+# #venuelist > li:nth-child(4) > div.body > div:nth-child(1) > a
 # #venuelist > li:nth-child(1) > div.body > div > a
-# #venuelist > li:nth-child(4) > div.body > div:nth-child(1) > a
-# #venuelist > li:nth-child(4) > div.body > div:nth-child(1) > a
+
 
 try:
     driver.find_element_by_xpath("//*[@id='btnPopupAccept']").click()
@@ -151,7 +157,8 @@ elif n==9:
 elif n==10:
     driver.find_element_by_xpath("//*[@id='pop_10']").click()
 
-driver.implicitly_wait(5)
+#driver.implicitly_wait(5)
+wait.until(EC.element_to_be_clickable((By.ID,"proceed-Qty")))
 # for confirming seats
 driver.find_element_by_id("proceed-Qty").click()
 
@@ -163,7 +170,8 @@ r=random.randint(1,length)
 print(length)
 for i in range(1,n):
     seat[r].click()
-driver.implicitly_wait(5)
+#driver.implicitly_wait(5)
+wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='btmcntbook']")))
 x=driver.find_element_by_xpath("//*[@id='btmcntbook']")
 if x.is_displayed():
     x.click()
