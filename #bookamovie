@@ -11,13 +11,13 @@ t=t1.strftime("%d")
 t=int(t)
 x=input("Enter the location: ")
 y=input("Enter the name of show, movie, event etc: ")
-z=input("The tickets are available for five days including today so, tell us when do you want to go? (Enter the date :) ")
+z=input("The tickets are available for five days including today so, tell us when do you want to go? (Enter the date) ")
 z=int(z)
 n=input("How many guys are going? ")
 n=int(n)
 m=input("Enter mall preference. ")
 ticket=input("Do you want mobile ticket or pickup from box-office? [m/b] ")
-eat=input(print("The cinema has a variety of eatables, want some?[y/n]"))
+eat=input("The cinema has a variety of eatables, want some?[y/n] ")
 
 if eat == "y":
     print("Here is the list of available items")
@@ -58,14 +58,14 @@ if eat == "y":
     print("32) Paneer Tikka Sandwich")
     print("33) Large Salted Popcorn + 2 Iced Tea")
     print("34) Regular Salted Popcorn + Iced Tea")
-    food=input()
-    food=int(food)
+    food = input()
+    food = int(food)
 
 email=input("Please enter your email address. ")
 pno=input("Please enter your phone number. ")
 
-driver=webdriver.Chrome("/home/akshath/Downloads/chromedriver")
-wait=WebDriverWait(driver, 60)
+driver = webdriver.Chrome("/home/akshath/Downloads/chromedriver")
+wait = WebDriverWait(driver, 60)
 driver.maximize_window()
 
 # for opening the desired city
@@ -75,10 +75,13 @@ print(driver.title)
 #driver.implicitly_wait(5)
 wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='wzrk-cancel']")))
 # for eliminating the popup
-driver.find_element_by_xpath("//*[@id='wzrk-cancel']").click()
+try:
+    driver.find_element_by_xpath("//*[@id='wzrk-cancel']").click()
+except:
+    print("No Pop-Up detected")
 
-#driver.implicitly_wait(7)
 wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='input-search-box']")))
+
 # for putting in the movie name
 show=driver.find_element_by_xpath("//*[@id='input-search-box']")
 show.send_keys(y)
@@ -88,39 +91,64 @@ show.send_keys(Keys.RETURN)
 #for the date
 if z==t:
     try:
+        wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='showDates']/li[1]")))
         driver.find_element_by_xpath("//*[@id='showDates']/li[1]").click()
     except:
         print("The show is not available on th current date :(")
 
 elif z==t+1:
     try:
+        wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='showDates']/li[2]")))
         driver.find_element_by_xpath("//*[@id='showDates']/li[2]").click()
     except:
         print("The show is not available on th current date :(")
 
 elif z==t+2:
     try:
+        wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='showDates']/li[3]")))
         driver.find_element_by_xpath("//*[@id='showDates']/li[3]").click()
     except:
         print("The show is not available on th current date :(")
 
 elif z==t+3:
     try:
+        wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='showDates']/li[4]")))
         driver.find_element_by_xpath("//*[@id='showDates']/li[4]").click()
     except:
         print("The show is not available on th current date :(")
 
 elif z==t+4:
     try:
+        wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='showDates']/li[5]")))
+        driver.find_element_by_xpath("//*[@id='showDates']/li[5]").click()
+    except:
+        print("The show is not available on th current date :(")
+elif z==t+5:
+    try:
+        wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='showDates']/li[6]")))
+        driver.find_element_by_xpath("//*[@id='showDates']/li[5]").click()
+    except:
+        print("The show is not available on th current date :(")
+elif z==t+6:
+    try:
+        wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='showDates']/li[7]")))
+        driver.find_element_by_xpath("//*[@id='showDates']/li[5]").click()
+    except:
+        print("The show is not available on th current date :(")
+elif z==t+7:
+    try:
+        wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='showDates']/li[8]")))
         driver.find_element_by_xpath("//*[@id='showDates']/li[5]").click()
     except:
         print("The show is not available on th current date :(")
 
-select = driver.find_element_by_xpath("//*[@id='fltrsearch']")
 
-select.send_keys(m)
-#driver.implicitly_wait(3)
-select.send_keys(Keys.RETURN)
+wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='fltrsearch']")))
+select = driver.find_element_by_xpath("//*[@id='fltrsearch']")
+if m!="none":
+    select.send_keys(m)
+    select.send_keys(Keys.RETURN)
+
 try:
     driver.find_element_by_css_selector("#venuelist > li:nth-child(4) > div.body > div:nth-child(1) > a").click()
 except:
@@ -137,27 +165,36 @@ except:
 
 # for no. of seats
 if n==1:
+    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='pop_1']")))
     driver.find_element_by_xpath("//*[@id='pop_1']").click()
 elif n==2:
+    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='pop_2']")))
     driver.find_element_by_xpath("//*[@id='pop_2']").click()
 elif n==3:
+    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='pop_3']")))
     driver.find_element_by_xpath("//*[@id='pop_3']").click()
 elif n==4:
+    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='pop_4']")))
     driver.find_element_by_xpath("//*[@id='pop_4']").click()
 elif n==5:
+    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='pop_5']")))
     driver.find_element_by_xpath("//*[@id='pop_5']").click()
 elif n==6:
+    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='pop_6']")))
     driver.find_element_by_xpath("//*[@id='pop_6']").click()
 elif n==7:
+    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='pop_7']")))
     driver.find_element_by_xpath("//*[@id='pop_7']").click()
 elif n==8:
+    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='pop_8']")))
     driver.find_element_by_xpath("//*[@id='pop_8']").click()
 elif n==9:
+    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='pop_9']")))
     driver.find_element_by_xpath("//*[@id='pop_9']").click()
 elif n==10:
+    wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='pop_10']")))
     driver.find_element_by_xpath("//*[@id='pop_10']").click()
 
-#driver.implicitly_wait(5)
 wait.until(EC.element_to_be_clickable((By.ID,"proceed-Qty")))
 # for confirming seats
 driver.find_element_by_id("proceed-Qty").click()
@@ -166,94 +203,98 @@ driver.find_element_by_id("proceed-Qty").click()
 
 seat=driver.find_elements_by_css_selector("a._available")
 length=len(seat)
-r=random.randint(1,length)
-print(length)
-for i in range(1,n):
+
+
+while 1:
+    r = random.randint(1, length)
     seat[r].click()
-#driver.implicitly_wait(5)
-wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='btmcntbook']")))
-x=driver.find_element_by_xpath("//*[@id='btmcntbook']")
-if x.is_displayed():
-    x.click()
+    x = driver.find_element_by_id("btmcntbook")
+    if x.is_displayed():
+        x.click()
+        break
+
 if x=="m":
     driver.find_element_by_xpath("//*[@id='shmticket']/label").click()
 else:
     driver.find_element_by_xpath("//*[@id='shbox']/label").click()
 
 # for food item
-if eat=="y":
-    if food==1:
+if eat == "y":
+    if food == 1:
         driver.find_element_by_xpath("//*[@id='add-btn_1020005-44']").click()
-    elif food==2:
+    elif food == 2:
         driver.find_element_by_xpath("//*[@id='add-btn_1020006-138']").click()
-    elif food==3:
+    elif food == 3:
         driver.find_element_by_xpath("//*[@id='add-btn_1020079-799']").click()
-    elif food==4:
+    elif food == 4:
         driver.find_element_by_xpath("//*[@id='add-btn_1020001-35']").click()
-    elif food==5:
+    elif food == 5:
         driver.find_element_by_xpath("//*[@id='add-btn_1020001-34']").click()
-    elif food==6:
+    elif food == 6:
         driver.find_element_by_xpath("//*[@id='add-btn_1020005-489']").click()
-    elif food==7:
+    elif food == 7:
         driver.find_element_by_xpath("//*[@id='add-btn_1020036-650']").click()
-    elif food==8:
+    elif food == 8:
         driver.find_element_by_xpath("//*[@id='add-btn_1020171-925']").click()
-    elif food==9:
+    elif food == 9:
         driver.find_element_by_xpath("//*[@id='add-btn_1020007-570']").click()
-    elif food==10:
+    elif food == 10:
         driver.find_element_by_xpath("//*[@id='add-btn_1020007-570']").click()
-    elif food==11:
+    elif food == 11:
         driver.find_element_by_xpath("//*[@id='add-btn_1020162-804']").click()
-    elif food==12:
+    elif food == 12:
         driver.find_element_by_xpath("//*[@id='add-btn_1020005-488']").click()
-    elif food==13:
+    elif food == 13:
         driver.find_element_by_xpath("//*[@id='add-btn_1020007-45']").click()
-    elif food==14:
+    elif food == 14:
         driver.find_element_by_xpath("//*[@id='add-btn_1020009-232']").click()
-    elif food==15:
+    elif food == 15:
         driver.find_element_by_xpath("//*[@id='add-btn_1020014-488']").click()
-    elif food==16:
+    elif food == 16:
         driver.find_element_by_xpath("//*[@id='add-btn_1020007-571']").click()
-    elif food==17:
+    elif food == 17:
         driver.find_element_by_xpath("//*[@id='add-btn_1020016-4']").click()
-    elif food==18:
+    elif food == 18:
         driver.find_element_by_xpath("//*[@id='add-btn_1020001-915']").click()
-    elif food==19:
+    elif food == 19:
         driver.find_element_by_xpath("//*[@id='add-btn_1020042-415']").click()
-    elif food==20:
+    elif food == 20:
         driver.find_element_by_xpath("//*[@id='add-btn_1020371-17']").click()
-    elif food==21:
-        driver.find_element_by_xpath("//*[@id='add-btn_1020549-37']").click() # mojito
-    elif food==22:
+    elif food == 21:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020549-37']").click()
+    elif food == 22:
         driver.find_element_by_xpath("//*[@id='add-btn_1020001-916']").click()
-    elif food==23:
+    elif food == 23:
         driver.find_element_by_xpath("//*[@id='add-btn_1020004-16']").click()
-    elif food==24:
+    elif food == 24:
         driver.find_element_by_xpath("//*[@id='add-btn_1020004-1117']").click()
-    elif food==25:
-        driver.find_element_by_xpath("//*[@id='add-btn_1020004-1118']").click() #regular cheese popcorn
-    elif food==26:
+    elif food == 25:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020004-1118']").click()
+    elif food == 26:
         driver.find_element_by_xpath("//*[@id='add-btn_1020009-481']").click()
-    elif food==27:
+    elif food == 27:
         driver.find_element_by_xpath("//*[@id='add-btn_1020012-15']").click()
-    elif food==28:
-        driver.find_element_by_xpath("//*[@id='add-btn_1020013-145']").click() # veg burger
-    elif food==29:
+    elif food == 28:
+        driver.find_element_by_xpath("//*[@id='add-btn_1020013-145']").click()
+    elif food == 29:
         driver.find_element_by_xpath("//*[@id='add-btn_1020035-347']").click()
-    elif food==30:
+    elif food == 30:
         driver.find_element_by_xpath("//*[@id='add-btn_1020100-557']").click()
-    elif food==31:
+    elif food == 31:
         driver.find_element_by_xpath("//*[@id='add-btn_1020168-635']").click()
-    elif food==32:
+    elif food == 32:
         driver.find_element_by_xpath("//*[@id='add-btn_1020446-699']").click()
-    elif food==33:
+    elif food == 33:
         driver.find_element_by_xpath("//*[@id='add-btn_1020518-720']").click()
-    elif food==34:
+    elif food == 34:
         driver.find_element_by_xpath("//*[@id='add-btn_1020322-646']").click()
-
+wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='prePay']")))
 driver.find_element_by_xpath("//*[@id='prePay']").click()
 
 # for email and phone no.
+wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='txtEmail']")))
 driver.find_element_by_xpath("//*[@id='txtEmail']").send_keys(email)
+wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='txtMobile']")))
 driver.find_element_by_xpath("//*[@id='txtMobile']").send_keys(pno)
+wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='dContinueContactSec']/a")))
 driver.find_element_by_xpath("//*[@id='dContinueContactSec']/a").click()
