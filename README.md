@@ -19,25 +19,31 @@ Installation links:
 1) Python installation link: 
    For linux:
       https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tar.xz
+   
    For windows:
       https://www.python.org/ftp/python/3.7.2/python-3.7.2-webinstall.exe
+
 2) pip installation:
    For linux:
       In terminal, type the following commands,
       * sudo apt update
       * sudo apt install python3-pip
+   
    For windows:
       Download get-pip.py to a folder on your computer.
       Open a command prompt and navigate to the folder containing get-pip.py.
       Run the following command:
       python get-pip.py
+
 3) Installing selenium:
    For linux:
       In the terminal, type the following command,
       sudo pip install selenium
+   
    For windows:
       In the command prompt, type the following command,
       pip install selenium
+
 4) Installing chrome driver:
    https://sites.google.com/a/chromium.org/chromedriver/
    Make sure that you extract the driver in the downloads folder in your home.
