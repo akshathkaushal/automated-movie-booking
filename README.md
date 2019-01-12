@@ -16,6 +16,7 @@ This code enables you to do the the following:-
 11) It also asks for your email id and phone number and fills it, taking you straight towards the payment.
 
 Installation links:
+
 1) Python installation link: 
    For linux:
       https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tar.xz
@@ -24,6 +25,7 @@ Installation links:
       https://www.python.org/ftp/python/3.7.2/python-3.7.2-webinstall.exe
 
 2) pip installation:
+
    For linux:
       In terminal, type the following commands,
       * sudo apt update
@@ -36,6 +38,7 @@ Installation links:
       python get-pip.py
 
 3) Installing selenium:
+
    For linux:
       In the terminal, type the following command,
       sudo pip install selenium
@@ -45,5 +48,6 @@ Installation links:
       pip install selenium
 
 4) Installing chrome driver:
+
    https://sites.google.com/a/chromium.org/chromedriver/
    Make sure that you extract the driver in the downloads folder in your home.
