@@ -1,13 +1,24 @@
-Idea
+Idea:
  The main idea of this project was to automate the booking of movie tickets for you. Since it mostly happens that you go online
  to book the tickets of your favourite movie, and just before you book the seat for yourself in an almost full theatre, it goes
  housefull. This code solves this problem since it is an automated code. You just have to fill in the required details and rest
  happens automatically. Also, you have to enter your card details since if I try to enter the card details myself, I will be
  compromising security.
 
-Technology used and implementation details
+Technology used and implementation details:
  The code is completely developed in python language. And the main module used is selenium module. From selenium, Keys, By, 
  expected_conditions, WebDriverWait and Select has been imported. Apart from this, time and random have been imported.
  The comments have been added for reference.
  
-Screenshots
+Future scope of my project:
+ Since the world is contantly developing and everyone is getting busier and busier, so automation has a great scope in the 
+ future as it greatly helps in saving time. In the present time, my code helps in locking the seats for the user and hence 
+ ensuring the seats for the user. Plus if a company uses this code and transforms it into an app, I believe that it would be a
+ great success since it saves time plus it is very easy and safe to use. The security isn't compromised as the user has to enter
+ payment details himself.
+ 
+My overall experience while doing this project:
+ Before this project I always wondered how these bots functioned. After this project, I learnt a great deal about automation 
+ from this project. Plus,I learnt about the security features of websites like google, facebook etc and how these 
+ websites protect their content from automated bots. I also learnt about captcha and why it is used. All in all it was a great 
+ project and I learn a great deal from it.
