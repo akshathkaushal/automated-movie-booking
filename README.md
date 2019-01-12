@@ -41,4 +41,3 @@ Installation links:
 4) Installing chrome driver:
    https://sites.google.com/a/chromium.org/chromedriver/
    Make sure that you extract the driver in the downloads folder in your home.
-5) 
