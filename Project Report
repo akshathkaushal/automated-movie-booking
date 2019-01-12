@@ -1,0 +1,13 @@
+Idea
+ The main idea of this project was to automate the booking of movie tickets for you. Since it mostly happens that you go online
+ to book the tickets of your favourite movie, and just before you book the seat for yourself in an almost full theatre, it goes
+ housefull. This code solves this problem since it is an automated code. You just have to fill in the required details and rest
+ happens automatically. Also, you have to enter your card details since if I try to enter the card details myself, I will be
+ compromising security.
+
+Technology used and implementation details
+ The code is completely developed in python language. And the main module used is selenium module. From selenium, Keys, By, 
+ expected_conditions, WebDriverWait and Select has been imported. Apart from this, time and random have been imported.
+ The comments have been added for reference.
+ 
+Screenshots
