@@ -9,7 +9,7 @@ This code enables you to do the the following:-
 4) Select your favourite mall.
 5) It will give you the first show of that day.
 6) Then select the number of seats.
-7) It will automatically book the sats for you.
+7) It will automatically book the seats for you.
 8) If you want, you can book a snack for you during the movie.
 9) You can also selct the option where you can collect your ticket, either online or directly from box office.
 10) This code is generous :) , it automatically gives Rs.2 for charity. 
