@@ -85,7 +85,7 @@ wait.until(EC.element_to_be_clickable((By.XPATH,"//*[@id='input-search-box']")))
 # for putting in the movie name
 show=driver.find_element_by_xpath("//*[@id='input-search-box']")
 show.send_keys(y)
-driver.implicitly_wait(3)
+driver.implicitly_wait(1)
 show.send_keys(Keys.RETURN)
 
 #for the date
@@ -212,7 +212,7 @@ while 1:
     if x.is_displayed():
         x.click()
         break
-
+driver.implicitly_wait(3)
 if x=="m":
     driver.find_element_by_xpath("//*[@id='shmticket']/label").click()
 else:
@@ -288,7 +288,7 @@ if eat == "y":
         driver.find_element_by_xpath("//*[@id='add-btn_1020518-720']").click()
     elif food == 34:
         driver.find_element_by_xpath("//*[@id='add-btn_1020322-646']").click()
-wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='prePay']")))
+#wait.until(EC.element_to_be_clickable((By.XPATH, "//*[@id='prePay']")))
 driver.find_element_by_xpath("//*[@id='prePay']").click()
 
 # for email and phone no.
