@@ -1,6 +1,7 @@
 # Bookmyshow Bot
 This is a simple BookMyShow Bot developed in python using Selenium. 
 Selenium is used mainly for automating web applications for testing purposes, but is certainly not limited to just that. Boring web-based administration tasks can (and should!) be automated as well.
+
 This code is developed for chrome browser by installing its driver. Using it you can book the first show of your favourite movie in your favourite movie theatre. And not only this, you can also book your favourite snack among the listed ones if you want. 
 This code enables you to do the the following:-
 1) Select your region.
