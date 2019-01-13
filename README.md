@@ -5,15 +5,15 @@ Selenium is used mainly for automating web applications for testing purposes, bu
 This code is developed for chrome browser by installing its driver. Using it you can book the first show of your favourite movie in your favourite movie theatre. And not only this, you can also book your favourite snack among the listed ones if you want. 
 
 Just follow the following steps after running the code:-
-1) Select your region.
-2) Select your movie,play,play,sport etc.
-3) Select the date which suits you.
-4) Select your favourite mall.
+1) Type in your region.
+2) Type the name of your favourite movie,play,play,sport etc.
+3) Type in the date which suits you (for eg. 17).
+4) Type the name of your favourite mall (for eg. pvr).
 5) It will give you the first show of that day.
-6) Then select the number of seats.
+6) Then type the number of seats you want to book (in the range 1 to 10).
 7) It will automatically book the seats for you.
-8) If you want, you can book a snack for you during the movie.
-9) You can also selct the option where you can collect your ticket, either online or directly from box office.
+8) If you want, you can book a snack for you during the movie (type in y/n).
+9) You can also selct the option where you can collect your ticket, either online or directly from box office. (type in m/b)
 10) This code is generous :) , it automatically gives Rs.2 for charity. 
 11) It also asks for your email id and phone number and fills it, taking you straight towards the payment.
 
