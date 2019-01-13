@@ -54,4 +54,4 @@ Installation links:
    https://sites.google.com/a/chromium.org/chromedriver/
    
    Make sure that you extract the driver in the downloads folder in your home. Or else, you can extract the driver in some 
-   other folder and copy the address of the exe file and replace the address in the line of the code with it.
+   other folder and copy the address of the exe file and replace the address in the line 67 of the code with it.
