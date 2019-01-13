@@ -10,7 +10,7 @@ Just follow the following steps after running the code:-
 3) Type in the date which suits you (for eg. 17).
 4) Type the name of your favourite mall (for eg. pvr).
 5) It will give you the first show of that day.
-6) Then type the number of seats you want to book (in the range 1 to 10).
+6) Then type the number of seats you want to book. (in the range 1 to 10).
 7) It will automatically book the seats for you.
 8) If you want, you can book a snack for you during the movie (type in y/n).
 9) You can also selct the option where you can collect your ticket, either online or directly from box office. (type in m/b)
